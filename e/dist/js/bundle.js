@@ -38,7 +38,7 @@ module.exports = {
 },{"backbone":7}],3:[function(require,module,exports){
 "use strict";
 var Backbone = require('backbone');
-var $ = ('jquery');
+var $ = require('jquery');
 var template = require('../../templates/blogpost.hbs');
 
 var BlogView = Backbone.View.extend({
@@ -60,6 +60,12 @@ var BlogPostView = Backbone.View.extend({
   tagName: 'li',
   className: 'each-post col-md-6',
   template: template,
+  events: {
+    'click .delete' : 'complete'
+  },
+  initialize: function(){
+    this.listenTo(this.model, 'destroy', this.remove);
+  },
   render: function(){
     var context = this.model.toJSON();
     this.$el.html(this.template(context));
@@ -72,10 +78,11 @@ module.exports = {
   'BlogPostView' : BlogPostView
 };
 
-},{"../../templates/blogpost.hbs":5,"backbone":7}],4:[function(require,module,exports){
+},{"../../templates/blogpost.hbs":5,"backbone":7,"jquery":28}],4:[function(require,module,exports){
 "use strict";
 var Backbone = require('backbone');
 var template = require('../../templates/blogpostform.hbs');
+var $ = require('jquery');
 
 var BlogFormView = Backbone.View.extend({
   tagName: 'form',
@@ -93,12 +100,12 @@ var BlogFormView = Backbone.View.extend({
     event.preventDefault();
     this.collection.create({
       title:$('#title').val(),
-      body:$('#body').val()
+      post:$('#post').val()
     });
 
     this.clear({
       title:$('#title').val(''),
-      body:$('#body').val('')
+      post:$('#post').val('')
     });
   }
 });
@@ -107,7 +114,7 @@ module.exports = {
   'BlogFormView' : BlogFormView
 };
 
-},{"../../templates/blogpostform.hbs":6,"backbone":7}],5:[function(require,module,exports){
+},{"../../templates/blogpostform.hbs":6,"backbone":7,"jquery":28}],5:[function(require,module,exports){
 "use strict";
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
@@ -126,7 +133,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<!DOCTYPE html>\n\n\n<div class=\"form-group\">\n  <label for=\"title\">Title</label>\n  <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" placeholder=\"Title\">\n</div>\n\n<div class=\"form-group\">\n  <label for=\"body\">Name</label>\n  <textarea class=\"form-control\" id=\"body\" name=\"body\" placeholder=\"Type Blog Here\" rows=\"3\"></textarea>\n</div>\n\n<button type=\"submit\" class=\"add-button btn btn-default\">Submit</button>\n";
+    return "<!DOCTYPE html>\n\n\n<div class=\"form-group\">\n  <label for=\"title\">Title</label>\n  <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" placeholder=\"Title\">\n</div>\n\n<div class=\"form-group\">\n  <label for=\"post\">Name</label>\n  <textarea class=\"form-control\" id=\"post\" name=\"post\" placeholder=\"Type Blog Here\" rows=\"3\"></textarea>\n</div>\n\n<button type=\"submit\" class=\"add-button btn btn-default\">Submit</button>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":27}],7:[function(require,module,exports){

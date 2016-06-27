@@ -5817,4 +5817,7 @@ button.close {
 img {
   max-width: 100%; }
 
+.each-bookmark {
+  list-style-type: none; }
+
 /*# sourceMappingURL=app.css.map */

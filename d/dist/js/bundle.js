@@ -29,7 +29,7 @@ var Bookmark = Backbone.Model.extend({
 
 var BookmarkCollection = Backbone.Collection.extend({
   model: Bookmark,
-  url: 'http://tiny-lasagna-server.herokuapp.com/collections/karasstuff'
+  url: 'https://tiny-lasagna-server.herokuapp.com/collections/karasstuff'
 });
 
 
@@ -69,7 +69,7 @@ var BookmarkFormView = Backbone.View.extend({
 
 var BookmarkView = Backbone.View.extend({
   tagName : 'ul',
-  className : 'bookmark-list col-md-6',
+  className : 'bookmark-list col-md-offset-2 col-md-4',
   initialize: function(){
     this.listenTo(this.collection, 'add',this.renderItem);
   },
@@ -84,7 +84,7 @@ var BookmarkView = Backbone.View.extend({
 
 var BookmarkItemView = Backbone.View.extend({
   tagName: 'li',
-  className : 'each-bookmark col-md-6',
+  className : 'each-bookmark',
   template : eachBookmark,
   render: function(){
     var context = this.model.toJSON();
