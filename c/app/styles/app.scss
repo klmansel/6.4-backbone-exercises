@@ -1,0 +1,35 @@
+$red: #d00;
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.blog-form {
+  height: 250px;
+}
+
+.view-posts {
+  line-height: 30px;
+  list-style-type: none;
+}
+
+h1 {
+  font-family: cursive;
+  font-weight: bold;
+}
+
+h3 {
+  color: $red;
+}

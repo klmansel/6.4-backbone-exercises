@@ -1,0 +1,44 @@
+$red: #d00;
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  color: $red;
+  text-align: center;
+}
+
+.form-results {
+  line-height: 30px;
+  list-style-type: none;
+}
+
+.person-form {
+  color: $red;
+  display: inline-block;
+}
+
+.person-name {
+  font-weight: bold;
+}
+
+.each-person {
+  margin-top: 30px;
+}
+
+.add-button {
+  color: $red;
+}
